@@ -69,10 +69,15 @@ function createButton(buttonTypeClass, buttonText, eventListener) {
 function addBook() {
   const incompleteBookshelfList = document.getElementById(incomplete_Book_id);
   const completeBookshelfList = document.getElementById(complete_Book_id);
-  const bookTitle = document.getElementById("inputBookTitle").value;
-  const bookAuthor = document.getElementById("inputBookAuthor").value;
-  const bookYear = document.getElementById("inputBookYear").value;
-  const isComplete = document.getElementById("inputBookIsComplete").checked;
+  const bookTitleInput = document.getElementById("inputBookTitle");
+  const bookAuthorInput = document.getElementById("inputBookAuthor");
+  const bookYearInput = document.getElementById("inputBookYear");
+  const isCompleteInput = document.getElementById("inputBookIsComplete");
+
+  const bookTitle = bookTitleInput.value;
+  const bookAuthor = bookAuthorInput.value;
+  const bookYear = bookYearInput.value;
+  const isComplete = isCompleteInput.checked;
 
   const book = makeBook(bookTitle, `Penulis: ${bookAuthor}`, `Tahun: ${bookYear}`, isComplete);
   const bookObject = composeBookObject(bookTitle, bookAuthor, bookYear, isComplete);
@@ -85,8 +90,16 @@ function addBook() {
   } else {
     incompleteBookshelfList.append(book);
   }
+
+  // Membersihkan nilai input setelah submit
+  bookTitleInput.value = '';
+  bookAuthorInput.value = '';
+  bookYearInput.value = '';
+  isCompleteInput.checked = false;
+
   updateDataToStorage();
 }
+
 
 //untuk mengembalikan nilai ke "selesai dibaca", melalui button "selesai dibaca" ketika berada di "Belum Selesai dibaca"
 function addBookToCompleted(bookElement) {
