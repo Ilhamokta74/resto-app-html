@@ -5,23 +5,33 @@ var totalSlides = slides.length;
 var index = 0;
 
 nextSlide.onclick = function () {
-  showSlide("next");
+  next("next");
+  console.log(`next ${slides.length}`);
 };
-
 prevSlide.onclick = function () {
-  showSlide("prev");
+  next("prev");
+  console.log(`prev ${slides.length}`);
 };
 
-function showSlide(direction) {
-  // Remove the 'active' class from the current slide
-  slides[index].classList.remove("active");
-
-  if (direction === "next") {
-    index = (index + 1) % totalSlides; // Move to the next slide, wrap around if at the end
-  } else if (direction === "prev") {
-    index = (index - 1 + totalSlides) % totalSlides; // Move to the previous slide, wrap around if at the start
+function next(direction) {
+  if (direction == "next") {
+    index++;
+    if (index == totalSlides) {
+      index = 0;
+    }
+    console.log(index);
+  } else {
+    if (index == 0) {
+      index = totalSlides - 1;
+    } else {
+      index--;
+    }
+    console.log(index);
   }
 
-  // Add the 'active' class to the new slide
+  for (i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("active");
+    console.log(`remove slides`)
+  }
   slides[index].classList.add("active");
 }
