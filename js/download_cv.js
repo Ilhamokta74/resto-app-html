@@ -3,7 +3,7 @@ document.getElementById('downloadButton').addEventListener('click', function () 
     var fileName = 'CV_Ilham Oktavian.pdf';
 
     // Membuat URL untuk file yang sudah ada
-    var url = '/CV/' + fileName; // Gantilah dengan path yang sesuai
+    var url = '../Media/CV/' + fileName; // Gantilah dengan path yang sesuai
 
     // Membuat elemen <a> untuk mengunduh file
     var a = document.createElement('a');
@@ -14,13 +14,13 @@ document.getElementById('downloadButton').addEventListener('click', function () 
     document.body.appendChild(a);
     a.click();
 
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "CV Sedang Di Persiapkan",
-        showConfirmButton: false,
-        timer: 1500
-    });
+    // Swal.fire({
+    //     position: "center",
+    //     icon: "success",
+    //     title: "CV Sedang Di Persiapkan",
+    //     showConfirmButton: false,
+    //     timer: 1500
+    // });
 
     // Menghapus elemen <a> setelah selesai diunduh
     document.body.removeChild(a);
